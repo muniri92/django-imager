@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'imager_profile.models',  # maybe,
+    'imager_images.models',  # probably not
 ]
 
 MIDDLEWARE_CLASSES = [
