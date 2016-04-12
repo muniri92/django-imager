@@ -1,28 +1,25 @@
+
 from __future__ import unicode_literals
 from django.test import TestCase
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 import factory
-# Create your tests here.
+
+from imager_profile.models import ImagerProfile
 
 
-class PhotoFactory(factory.django.DjangoModelFactory):
+class UserFactory(factory.django.DjangoModelFactory):
+
     class Meta:
-        model = Photo  # my model (Photo, Album)
+        model = User
 
 
-class PhotoTestCase(TestCase):
+class UserTestCase(TestCase):
 
     def setUp(self):
-        self.Photo = PhotoFactory.create(
-            title = ''
-            description = ''
-            date_uploaded = '' 
-            date_modified = ''
-            date_published = ''
-            published = ''
+        self.user = UserFactory.create(
+            username='',
+            email='',
         )
-        # this will hash the password
-        self.Photo.set_password('some_password')  
 
-    def test_title(self):
-
+    def test_user_has_profile(self):
+        self.assertTrue(self.user.profile)
