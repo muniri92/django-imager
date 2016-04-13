@@ -47,7 +47,6 @@ def logout_view(request):
 #     return render(request, 'home.html', {'form': form})
 
 
-
 # def logins(request):
 #     """A."""
 #     # import pdb; pdb.set_trace()

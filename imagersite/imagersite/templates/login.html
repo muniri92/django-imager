@@ -10,11 +10,13 @@
 	<form action='/login/' method="POST">
 		<div class="field">
 			<label for="username">Username</label>
-			<input type="text" name"username" id="username"></input>
+			<!-- <input type="text" name"username" id="username"></input> -->
+			{{ form.username }}
 		</div>
 		<div>
 			<label for="password">Password</label>
-			<input type="password" name"password" id="password"></input>
+			<!-- <input type="password" name"password" id="password"></input> -->
+			{{ form.password }}
 		</div>
     <div>
       <input type="submit", name="submit", value="LOGIN"></input>
