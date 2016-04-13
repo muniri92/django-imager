@@ -32,14 +32,8 @@ urlpatterns = [
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     # url(r'^login/$', 'django.contrib.auth.views.login',
     # {'login': 'imagersite/templates/login.html'}),
-    # url(r'^profile/', include('imager_profile.urls')),
+    # url(r'^account/profile/', include('imager_profile.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-# YOU'LL NEED THIS FOR MEDIA STUFF
-# if settings.DEBUG:
-# 	urlpatterns += static(settings.[**MEDIA_URL**], document_root=settings.[
-# **MEDIA_URL**])
