@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-# from .views import home_view
+from .views import logins, logout
 from .views import ClassView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,7 +24,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^$', home_view, name='homepage'),
+    # url(r'^login/$', login, name='login'),
+    url(r'^logout/$', logout, name='logout'),
+    url(r'^login/$', 'django.contrib.auth.views.login', {'login': 'imagersite/templates/login.html'}),
+
     url(r'^$', ClassView.as_view(), name='homepage'),
     # url(r'^profile/', include('imager_profile.urls')),
 ]
