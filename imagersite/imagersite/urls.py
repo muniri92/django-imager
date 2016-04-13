@@ -13,9 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-from .views import logins, logout
+# from .views import logins, logout
+from django.contrib.auth.decorators import login_required
+
 from .views import ClassView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,11 +26,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', login_required(ClassView.as_view()), name='homepage'),
+    url(r'^login/$', 'django.contrib.auth.views.login', name="login"),
     # url(r'^login/$', login, name='login'),
-    url(r'^logout/$', logout, name='logout'),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'login': 'imagersite/templates/login.html'}),
-
-    url(r'^$', ClassView.as_view(), name='homepage'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    # url(r'^login/$', 'django.contrib.auth.views.login',
+    # {'login': 'imagersite/templates/login.html'}),
     # url(r'^profile/', include('imager_profile.urls')),
 ]
 

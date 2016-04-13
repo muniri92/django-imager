@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Home Page</title>
+	<title>LOGIN</title>
 </head>
 <body>
-  <h1>Hello!</h1>
-  <p>Welcome, would you like to join our site?</p>
-  <img src="{{ img.file.url }}">
 
-  <br>
-<!-- 
 	<h1>LOGIN HERE</h1>
 
 	<form action='/login/' method="POST">
 		<div class="field">
+			{% csrf_token %}
 			<label for="username">Username</label>
 			<input type="text" name"username" id="username"></input>
 		</div>
@@ -24,6 +20,7 @@
     <div>
       <input type="submit", name="submit", value="LOGIN"></input>
     </div>
-	</form> -->
+	</form>
+
 </body>
 </html>
