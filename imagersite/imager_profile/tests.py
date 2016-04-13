@@ -87,7 +87,7 @@ class ManyUserCase(TestCase):
 
     def setUp(self):
         """Add multiple users to tests."""
-        self.user_batch = UserFactory.create_batch(50)
+        self.user_lot = UserFactory.create_batch(50)
 
     def test_active_count(self):
         """Confirm that users count are correct."""
@@ -95,13 +95,13 @@ class ManyUserCase(TestCase):
 
     def test_many_deleted(self):
         """Confirm that count is changed when multiple users are deleted."""
-        for user in random.sample(self.user_batch, 50 // 2):
+        for user in random.sample(self.user_lot, 50 // 2):
             user.delete()
         self.assertEqual(ImagerProfile.active.count(), 50 // 2)
 
 
 class DeletedUserCase(OneUserCase):
-    """Base case setting up one User, and then deleting it."""
+    """Setting up one User, and then deleting it."""
 
     def setUp(self):
         """Set up User models."""
@@ -122,5 +122,4 @@ class DeletedUserCase(OneUserCase):
 
     def test_active_not_contains(self):
         """Test that counting the active manager returns expected int."""
-        # import pdb; pdb.set_trace()
         self.assertNotIn(self.user, ImagerProfile.active.all())
