@@ -52,11 +52,11 @@ class Photo(models.Model):
 
     description = models.CharField(max_length=500)
 
-    date_uploaded = models.DateField(auto_now_add=True)
+    date_uploaded = models.DateTimeField(auto_now_add=True)
 
-    date_modified = models.DateField(auto_now=True)
+    date_modified = models.DateTimeField(auto_now=True)
 
-    date_published = models.DateField()
+    date_published = models.DateTimeField(null=True)
 
     published = models.CharField(
         max_length=30,
@@ -79,13 +79,21 @@ class Album(models.Model):
         related_name='albums'
     )
 
+    cover = models.ForeignKey(
+        'Photo',
+        on_delete=models.CASCADE,
+        related_name='covered_albums',
+        null=True,
+        default=None
+    )
+
     title = models.CharField(max_length=100)
 
     description = models.CharField(max_length=500)
 
-    date_uploaded = models.DateField(auto_now_add=True)
+    date_uploaded = models.DateTimeField(auto_now_add=True)
 
-    date_modified = models.DateField(auto_now=True)
+    date_modified = models.DateTimeField(auto_now=True)
 
     published = models.CharField(
         max_length=30,
