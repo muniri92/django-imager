@@ -23,6 +23,11 @@ class ClassView(TemplateView):
         return {'img': img}
 
 
+def success_login(request):
+    """Success for a login."""
+    return render(request, 'success.html', {})
+
+
 def logout_view(request):
     logout(request)
     return redirect('homepage')

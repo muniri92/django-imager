@@ -7,16 +7,14 @@
 
 	<h1>LOGIN HERE</h1>
 
-	<form action='/login/' method="POST">
+	<form action='' method="POST">
 		<div class="field">
 			{% csrf_token %}
 			<label for="username">Username</label>
-			<!-- <input type="text" name"username" id="username"></input> -->
 			{{ form.username }}
 		</div>
 		<div>
 			<label for="password">Password</label>
-			<!-- <input type="password" name"password" id="password"></input> -->
 			{{ form.password }}
 		</div>
     <div>

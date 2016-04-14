@@ -28,7 +28,14 @@ SECRET_KEY = '-$q396nkir%&0s4#g()6d6=b05y%3ip67yu2g&7sk-v&v$3=$r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp', 'emails')
+
 ALLOWED_HOSTS = []
+
+# One-week activation window; you may, of course, use a different value.
+ACCOUNT_ACTIVATION_DAYS = 700
 
 
 # Application definition

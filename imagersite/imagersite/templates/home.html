@@ -4,29 +4,17 @@
  <title>Home Page</title>
 </head>
 <body>
+  <br>
+  {% if user.is_authenticated %}
+  	<h1>{{user.username}}</h1>
+  {% endif %}		
   <h1>Hello!</h1>
   <p>Welcome, would you like to join our site?</p>
   <img src="{{ img.file.url }}">
 
   <br>
+ 	<a href="{% url 'login' %}">LOGIN PAGE</a>
+ 	<a href="/accounts/register">REGISTER NEW USER</a>
 
-  <a href="account/login/">LOGIN PAGE</a>
-
-<!-- 
-	<h1>LOGIN HERE</h1>
-
-	<form action='/login/' method="POST">
-		<div class="field">
-			<label for="username">Username</label>
-			<input type="text" name"username" id="username"></input>
-		</div>
-		<div>
-			<label for="password">Password</label>
-			<input type="password" name"password" id="password"></input>
-		</div>
-    <div>
-      <input type="submit", name="submit", value="LOGIN"></input>
-    </div>
-	</form> -->
 </body>
 </html>
