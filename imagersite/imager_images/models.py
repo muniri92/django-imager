@@ -40,6 +40,7 @@ class Photo(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        null=True,
         related_name='photos',
     )
 
