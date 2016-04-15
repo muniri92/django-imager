@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from imager_images.models import Photo
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from imager_profile.models import ImagerProfile
 # from .forms  # import NameForm
 # from django.contrib.auth.decorators import login_required
 
@@ -23,14 +24,27 @@ class ClassView(TemplateView):
         return {'img': img}
 
 
-def success_login(request):
-    """Success for a login."""
-    return render(request, 'success.html', {})
+class ProfileView(TemplateView):
+    """Profile view."""
+
+    template_name = 'success.html'
+    # import pdb; pdb.set_trace()
+
+    # def get_context_data(self):
+    #     """Pass user information to profile view page."""
+    #     # try:
+    #     return {'user': self.request.user}
+
+
+# def success_login(request):
+#     """Success for a login."""
+#     return render(request, 'success.html', {})
 
 
 def logout_view(request):
     logout(request)
     return redirect('homepage')
+
 
 
 # def get_login(request):
