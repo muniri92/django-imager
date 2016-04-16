@@ -34,8 +34,8 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     # url(r'^accounts/profile/$')
     url(r'^images/library/$', LibraryView.as_view(), name='library'),
-    url(r'^/images/album/<album_id>/$', AlbumView.as_view(), name='album'),
-    url(r'^/images/photos/<photo_id>/$', PhotoView.as_view(), name='photo'),
+    # url(r'^/images/album/<album_id>/$', AlbumView.as_view(), name='album'),
+    # url(r'^/images/photos/<photo_id>/$', PhotoView.as_view(), name='photo'),
     # {'login': 'imagersite/templates/login.html'}),
     # url(r'^account/profile/', include('imager_profile.urls')),
 ]

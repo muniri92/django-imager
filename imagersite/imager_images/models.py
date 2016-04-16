@@ -80,6 +80,11 @@ class Album(models.Model):
         related_name='albums'
     )
 
+    cover = models.ImageField(
+        upload_to=user_directory_path,
+        null=True,
+    )
+
     # cover = models.ForeignKey(
     #     'Photo',
     #     on_delete=models.CASCADE,
