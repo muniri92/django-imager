@@ -18,7 +18,7 @@ from django.contrib import admin
 # from .views import logins, logout
 # from django.contrib.auth.decorators import login_required
 
-from .views import ClassView, ProfileView
+from .views import ClassView, ProfileView, LibraryView, AlbumView, PhotoView
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.generic import TemplateView
@@ -33,9 +33,9 @@ urlpatterns = [
     url(r'^accounts/profile/$', ProfileView.as_view(), name="success"),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     # url(r'^accounts/profile/$')
-    # url(r'^images/library/$',)
-    # url(r'^/images/album/<album_id>/$',)
-    # url(r'^/images/photos/<photo_id>/$',)
+    url(r'^images/library/$', LibraryView.as_view(), name='library'),
+    url(r'^/images/album/<album_id>/$', AlbumView.as_view(), name='album'),
+    url(r'^/images/photos/<photo_id>/$', PhotoView.as_view(), name='photo'),
     # {'login': 'imagersite/templates/login.html'}),
     # url(r'^account/profile/', include('imager_profile.urls')),
 ]

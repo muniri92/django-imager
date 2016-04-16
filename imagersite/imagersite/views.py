@@ -28,17 +28,24 @@ class ProfileView(TemplateView):
     """Profile view."""
 
     template_name = 'success.html'
-    # import pdb; pdb.set_trace()
-
-    # def get_context_data(self):
-    #     """Pass user information to profile view page."""
-    #     # try:
-    #     return {'user': self.request.user}
 
 
-# def success_login(request):
-#     """Success for a login."""
-#     return render(request, 'success.html', {})
+class LibraryView(TemplateView):
+    """Library view."""
+
+    template_name = 'library.html'
+
+
+class AlbumView(TemplateView):
+    """Album View."""
+
+    template_name = 'album.html'
+
+
+class PhotoView(TemplateView):
+    """Photo View."""
+
+    template_name = 'photo.html'
 
 
 def logout_view(request):
