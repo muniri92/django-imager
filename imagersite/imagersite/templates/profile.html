@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Profile of {{user.username}}
+{% endblock %}
+
+{% block content %}
+
+    <h3>{{user.username}}'s Profile</h3>
+
+    <p>Region: {{user.profile.region}}</p>
+
+    <p>Camera Type: {{user.profile.camera_type}}</p>
+
+    <p>Genre: {{user.profile.type_of_photography}}</p>
+
+    <p>You have {{user.profile.friends.count}} friends.</p>
+
+    <p>You have {{user.albums.count}} albums and {{user.photos.count}} photos.</p>
+
+{% endblock %}
