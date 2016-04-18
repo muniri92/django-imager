@@ -51,6 +51,8 @@ class Photo(models.Model):
 
     title = models.CharField(max_length=100)
 
+    img_file = models.ImageField(upload_to='img_files')
+
     description = models.CharField(max_length=500)
 
     date_uploaded = models.DateTimeField(auto_now_add=True)
@@ -64,6 +66,8 @@ class Photo(models.Model):
         choices=PUBLISHED,
         default='Public',
     )
+
+    objects = models.Manager()
 
     def __str__(self):
         u"""WTF."""

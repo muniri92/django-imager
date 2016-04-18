@@ -7,4 +7,3 @@ class ImagerProfileConfig(AppConfig):
     def ready(self):
         """"Code to run when the app is ready."""
         from imager_profile import handlers
-        
