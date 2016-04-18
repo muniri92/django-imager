@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Home Page</title>
+</head>
+<body>
+  <br>
+  {% if user.is_authenticated %}
+  	<h1>{{user.username}}</h1>
+  {% endif %}
+  <h1>Hello!</h1>
+  <p>Welcome, would you like to join our site?</p>
+  <img src="{{ img.file.url }}">
+
+  <br>
+ 	<a href="{% url 'login' %}">LOGIN PAGE</a>
+ 	<a href="/accounts/register">REGISTER NEW USER</a>
+
+</body>
+</html>

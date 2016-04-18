@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success</title>
+</head>
+<body>
+	<h1>YOU ARE NOW LOGGED IN ... CHUMP!</h1>
+  <h1>This is {{ user }} </h1>
+  <p>Your email is: {{ user.email }}</p>
+  <a href="{% url 'library' %}">Photo Library</a>
+	<a href="{% url 'homepage' %}">home</a>
+</body>
+</html>

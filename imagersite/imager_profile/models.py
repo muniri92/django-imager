@@ -80,3 +80,4 @@ class ImagerProfile(models.Model):
     def is_active(self):
         u"""Are users active or not."""
         return self.user.is_active
+

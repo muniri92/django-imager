@@ -40,6 +40,7 @@ class Photo(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        null=True,
         related_name='photos',
     )
 
@@ -49,6 +50,8 @@ class Photo(models.Model):
     )
 
     title = models.CharField(max_length=100)
+
+    # img_file = models.ImageField(upload_to='img_files')
 
     description = models.CharField(max_length=500)
 
@@ -63,6 +66,8 @@ class Photo(models.Model):
         choices=PUBLISHED,
         default='Public',
     )
+
+    objects = models.Manager()
 
     def __str__(self):
         u"""WTF."""
@@ -79,13 +84,18 @@ class Album(models.Model):
         related_name='albums'
     )
 
-    cover = models.ForeignKey(
-        'Photo',
-        on_delete=models.CASCADE,
-        related_name='covered_albums',
+    cover = models.ImageField(
+        upload_to=user_directory_path,
         null=True,
-        default=None
     )
+
+    # cover = models.ForeignKey(
+    #     'Photo',
+    #     on_delete=models.CASCADE,
+    #     related_name='covered_albums',
+    #     null=True,
+    #     default=None
+    # )
 
     title = models.CharField(max_length=100)
 

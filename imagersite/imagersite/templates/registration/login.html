@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN</title>
+</head>
+<body>
+	<ul>
+    <li><a href="/">Home</a></li>
+  <ul>
+	<h1>LOGIN HERE</h1>
+
+	<form action='' method="POST">
+		<div class="field">
+			{% csrf_token %}
+			<label for="username">Username</label>
+			{{ form.username }}
+		</div>
+		<div>
+			<label for="password">Password</label>
+			{{ form.password }}
+		</div>
+    <div>
+      <input type="submit", name="submit", value="LOGIN"></input>
+    </div>
+	</form>
+
+</body>
+</html>
