@@ -79,12 +79,9 @@ class Album(models.Model):
         related_name='albums'
     )
 
-    cover = models.ForeignKey(
-        'Photo',
-        on_delete=models.CASCADE,
-        related_name='covered_albums',
+    cover = models.ImageField(
+        upload_to=user_directory_path,
         null=True,
-        default=None
     )
 
     title = models.CharField(max_length=100)

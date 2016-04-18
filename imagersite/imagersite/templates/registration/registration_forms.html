@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NEW USER</title>
+</head>
+<body>
+	<h1>WELCOME NEW USER</h1>
+
+	<form action='' method="POST">
+		<div class="field">
+			{% csrf_token %}
+			<label for="username">Username: </label>
+			<br>
+			{{ form.username }}
+		</div>
+		<div>
+			<label for="email">Email: </label>
+			<br>
+			{{ form.email }}
+		</div>
+		<div>
+			<label for="password">Password: </label>
+			<br>
+			{{ form.password1 }}
+		</div>
+		<div>
+			<label for="password">Re-enter Password: </label>
+			<br>
+			{{ form.password2 }}
+		</div>
+
+    <div>
+
+      <input type="submit", name="submit", value="Create Account"></input>
+    </div>
+	</form>
+
+</body>
+</html>

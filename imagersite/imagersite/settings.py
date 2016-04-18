@@ -17,6 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Media file handling
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -29,6 +30,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp', 'emails')
+
+# One-week activation window; you may, of course, use a different value.
+ACCOUNT_ACTIVATION_DAYS = 700
 
 # Application definition
 
@@ -87,6 +94,14 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '5432',
+    }
+}
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'images_cache_table',
     }
 }
 
