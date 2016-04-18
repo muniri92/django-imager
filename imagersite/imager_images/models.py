@@ -51,7 +51,7 @@ class Photo(models.Model):
 
     title = models.CharField(max_length=100)
 
-    img_file = models.ImageField(upload_to='img_files')
+    # img_file = models.ImageField(upload_to='img_files')
 
     description = models.CharField(max_length=500)
 
