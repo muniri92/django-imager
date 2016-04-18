@@ -9,26 +9,26 @@
 
 
 <section class="albums">
-    <h2>{{object.title}}</h2>
-      </p>
-        <div class="container">
-            <div class="row">
-                {% for photo in album.photos.all %}
-                    <div>
-                        <article>
-                            <p>{{photo.title}}</p>
-                            {% thumbnail photo.img_file "200" as file %}
-                                <a href="{{photo.get_url}}">
-                                    <img src="{{file.url}}">
-                                </a>
-                            {% empty %}
-                                <p>No Pictures here!</p>
-                            {% endthumbnail %}
-                        </article>
-                    </div>
-                {% endfor %}
-        </div>
+  <h2>{{object.title}}</h2>
+  </p>
+    <div class="container">
+      <div class="row">
+        {% for photo in album.photos.all %}
+          <div>
+            <article>
+              <p>{{photo.title}}</p>
+              {% thumbnail photo.img_file "200" as file %}
+                <a href="{{photo.get_url}}">
+                    <img src="{{file.url}}">
+                </a>
+              {% empty %}
+                <p>No Pictures here!</p>
+              {% endthumbnail %}
+            </article>
+          </div>
+        {% endfor %}
     </div>
+  </div>
 </section>
 
 

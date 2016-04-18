@@ -9,19 +9,19 @@
 {% block content %}
 
 <div>
-    <h3>{{object.title}}</h3>
-    {% if object.albums.all %}
-        <p>This photo is in:</p>
-        {% for album in object.albums.all %}
-            <a href="{{album.get_url}}">
-                <p>{{album.title}}</p>
-            </a>
-        {% endfor %}
-        {% else %}
-        <p>Photo not found in an album.</p>
-    {% endif %}
-    <img src="{{object.img_file.url}}">
-    <h3>Description: {{object.description}}</h3>
+  <h3>{{object.title}}</h3>
+  {% if object.albums.all %}
+    <p>This photo is in:</p>
+    {% for album in object.albums.all %}
+      <a href="{{album.get_url}}">
+          <p>{{album.title}}</p>
+      </a>
+    {% endfor %}
+    {% else %}
+    <p>Photo not found in an album.</p>
+  {% endif %}
+  <img src="{{object.img_file.url}}">
+  <h3>Description: {{object.description}}</h3>
 </div>
 
 {% endblock %}
