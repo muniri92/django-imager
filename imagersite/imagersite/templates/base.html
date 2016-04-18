@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+       Info Page
+    </title>
+
+</head>
+<body>
+<div class="container">
+<nav>
+  <div>
+    <ul>
+      <li><a href="/">Home</a></li>
+    <ul>
+    {% if user.is_authenticated %}
+    <ul>
+      <li><a href="/images/library/">Library</a></li>
+    </ul>
+
+    <ul>
+      <li><a href="/accounts/logout/">Logout</a></li>
+    </ul>
+
+    <ul>
+      <li><a href="#">Greetings, {{user.username}}</a></li>
+    </ul>
+
+    {% else %}
+
+    <ul>
+      <li><a href="/accounts/login">Login</a></li>
+    <ul>
+
+  </div>
+</nav>
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+</body>
+</html>
