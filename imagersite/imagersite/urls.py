@@ -16,29 +16,29 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 # from .views import logins, logout
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 
-from .views import ClassView, ProfileView, LibraryView, AlbumView, PhotoView
+from .views import ClassView, ProfileView, LibraryView
+from imager_images.models import Album, Photo
 from django.conf import settings
 from django.conf.urls.static import static
-# from django.views.generic import TemplateView
+from django.views.generic import DetailView
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', ClassView.as_view(), name='homepage'),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="login"),
-    # url(r'^account/profile$', login, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^accounts/profile/$', ProfileView.as_view(), name="success"),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
-    # url(r'^accounts/profile/$')
-    url(r'^images/library/$', LibraryView.as_view(), name='library'),
-    # url(r'^/images/album/<album_id>/$', AlbumView.as_view(), name='album'),
-    # url(r'^/images/photos/<photo_id>/$', PhotoView.as_view(), name='photo'),
-    # {'login': 'imagersite/templates/login.html'}),
-    # url(r'^account/profile/', include('imager_profile.urls')),
+    url(r'^images/library/$', login_required(LibraryView.as_view()), name='library_view'),
+    url(r'^images/album/(?P<pk>[0-9]+)/$',
+        login_required(DetailView.as_view(model=Album, template_name="album.html"))),
+    url(r'^images/photos/(?P<pk>[0-9]+)/$',
+        login_required(DetailView.as_view(model=Photo, template_name="photo.html"))),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

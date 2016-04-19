@@ -33,25 +33,12 @@ class ProfileView(TemplateView):
 class LibraryView(TemplateView):
     """Library view."""
 
-    # import pdb; pdb.set_trace()
     template_name = 'library.html'
 
     def get_context_data(self):
-        albums = Album.objects.all()[0]
-        img = Photo.objects.all()[0]
-        return {'albums': albums, 'img': img}
-
-
-class AlbumView(DetailView):
-    """Album View."""
-
-    template_name = 'album.html'
-
-
-class PhotoView(DetailView):
-    """Photo View."""
-
-    template_name = 'photo.html'
+        """Return a dictionary of the photo instances."""
+        albums = Album.objects.all()
+        return {'albums': albums}
 
 
 def logout_view(request):

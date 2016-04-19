@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ALBUM</title>
+</head>
+<body>
+	<h1>{{ user.username }}</h1>
+	<h1>{{ photo.title }}</h1>
+	<h3>{{ photo.description }}</h3>
+	<h3>{{ photo.date_published }}</h3>
+    <img src="{{ photo.file.url }}">
+</body>
+</html>

@@ -8,17 +8,15 @@
 {% load thumbnail %}
 
 	<h1>{{ user.username }}</h1>
-	<img src="{{ albums.cover.url }}">
 
-	<!-- <img src="{{ img.file.url }}"> -->
-
-<!-- 	{% for user in user.all %}
-
-		{% thumbnail album.cover "200x200" as im %}
-		    <img src="{{ im.file.url }}">
+	{% for album in albums %}
+	    {{ album.title }}
+	    {% thumbnail album.cover "200x200" as im %}
+	      <a href="">
+	        <img src="{{ im.url }}">
+	      </a>
 		{% endthumbnail %}
-
-	{% endfor %} -->
+	{% endfor %}
 
 </body>
 </html>
