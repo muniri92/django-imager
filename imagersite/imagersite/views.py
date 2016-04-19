@@ -27,7 +27,7 @@ class ClassView(TemplateView):
 class ProfileView(TemplateView):
     """Profile view."""
 
-    template_name = 'success.html'
+    template_name = 'profile.html'
 
 
 class LibraryView(TemplateView):
