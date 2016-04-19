@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    {% block title %}
+      <title>Insta-Imgr</title>
+    {% endblock %}
+
+</head>
+<body>
+
+  <header>
+
+    <nav class="navigation">
+  	  {% if user.is_authenticated %}
+  	  	<h2 class="username">{{user.username}}</h2>
+  	  {% endif %}
+      {% if user.is_authenticated %}
+        <ul>
+          <li><a href="/accounts/profile">PROFILE</a></li>
+          <li><a href="/images/library/">LIBRARY</a></li>
+          <li><a href="/accounts/logout/">LOGOUT</a></li>
+        </ul>
+      {% else %}
+        <ul>
+          <li><a href="/accounts/register">REGISTER</a></li>
+          <li><a href="{% url 'login' %}">LOGIN</a></li>
+        </ul>
+      {% endif %}
+    </nav>
+
+  </header>
+
+  <section>
+    {% block content %}
+      <h1 class="welcome">Welcome, to Insta-Imgr!</h1>
+      <h2>Are you registered yet?</h2>
+      <img class="home_img" src="{{ img.file.url }}">    
+    {% endblock %}
+  </section>
+
+
+</body>
+</html>

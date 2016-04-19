@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+
+
+{% block title %}
 	<title>ALBUM</title>
-</head>
-<body>
-	<h1>{{ user.username }}</h1>
+{% endblock %}
+
+{% block content %}
+
 	<h1>{{ album.title }}</h1>
 	{% load thumbnail %}
-
 	{% for photo in album.photos.all %}
 	    {{ photo.title }}
 	    {% thumbnail photo.file "200x200" as im %}
@@ -17,5 +18,4 @@
 		{% endthumbnail %}
 	{% endfor %}
 
-</body>
-</html>
+{% endblock %}

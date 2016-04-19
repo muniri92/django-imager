@@ -36,8 +36,9 @@ urlpatterns = [
     url(r'^images/album/(?P<pk>[0-9]+)/$',
         login_required(DetailView.as_view(model=Album,
                                           template_name="album.html"))),
-    url(r'^images/photos/(?P<pk>[0-9]+)/$',
-        login_required(DetailView.as_view(model=Photo, template_name="photo.html"))),
+    url(r'^images/photo/(?P<pk>[0-9]+)/$',
+        login_required(DetailView.as_view(model=Photo,
+                                          template_name="photo.html"))),
 ]
 
 if settings.DEBUG:

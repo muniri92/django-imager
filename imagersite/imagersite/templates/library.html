@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Library</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block title %}
+	<title>Library</title>
+{% endblock %}
+
+{% block content %}
 {% load thumbnail %}
 
-	<h1>{{ user.username }}</h1>
+	<h1>Library Album</h1>
 
 	{% for album in albums %}
 	    {{ album.title }}
@@ -18,5 +18,4 @@
 		{% endthumbnail %}
 	{% endfor %}
 
-</body>
-</html>
+{% endblock %}

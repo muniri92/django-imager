@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Success</title>
-</head>
-<body>
-	<h1>YOU ARE NOW LOGGED IN ... CHUMP!</h1>
-  <h1>This is {{ user }} </h1>
-  <p>Your email is: {{ user.email }}</p>
-  <a href="{% url 'library_view' %}">Photo Library</a>
-	<a href="{% url 'homepage' %}">home</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+  <title>SUCCESS</title>
+{% endblock %}
+
+{% block content %}
+	<h1 class="welcome">YOU ARE NOW LOGGED IN!</h1>
+  <p>USERNAME: {{ user }} </p>
+  <p>EMAIL: {{ user.email }}</p>
+{% endblock %}

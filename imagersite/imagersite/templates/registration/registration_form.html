@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+
+{% block title %}
 	<title>NEW USER</title>
-</head>
-<body>
-	<h1>WELCOME NEW USER</h1>
+{% endblock %}
+
+{% block content %}
+	<h1 class="welcome" >WELCOME NEW USER</h1>
 
 	<form action='' method="POST">
 		<div class="field">
@@ -34,6 +35,4 @@
       <input type="submit", name="submit", value="Create Account"></input>
     </div>
 	</form>
-
-</body>
-</html>
+{% endblock %}
