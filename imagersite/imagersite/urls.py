@@ -34,7 +34,8 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^images/library/$', login_required(LibraryView.as_view()), name='library_view'),
     url(r'^images/album/(?P<pk>[0-9]+)/$',
-        login_required(DetailView.as_view(model=Album, template_name="album.html"))),
+        login_required(DetailView.as_view(model=Album,
+                                          template_name="album.html"))),
     url(r'^images/photos/(?P<pk>[0-9]+)/$',
         login_required(DetailView.as_view(model=Photo, template_name="photo.html"))),
 ]

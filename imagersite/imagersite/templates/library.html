@@ -12,7 +12,7 @@
 	{% for album in albums %}
 	    {{ album.title }}
 	    {% thumbnail album.cover "200x200" as im %}
-	      <a href="">
+	      <a href="/images/album/{{ album.id }}">
 	        <img src="{{ im.url }}">
 	      </a>
 		{% endthumbnail %}
