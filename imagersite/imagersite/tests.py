@@ -4,7 +4,7 @@ from django.test import Client
 from django.test import TestCase
 
 
-class TestProfile(TestCase):
+class TestViewProfile(TestCase):
     """Test views class."""
 
     def setUp(self):

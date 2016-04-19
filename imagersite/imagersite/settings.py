@@ -103,7 +103,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'image_cache_table',
+        'LOCATION': 'images_cache_table',
     }
 }
 
