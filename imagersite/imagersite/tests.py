@@ -1,13 +1,12 @@
 from django.test import Client
 from django.test import TestCase, override_settings
+from django.core import mail
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from imager_images.models import Photo
 from django.conf import settings
 import factory
 import os
-
-TMP_MEDIA_ROOT = 'tmp/media/'
 
 
 class PublicViewTest(TestCase):
@@ -72,7 +71,10 @@ class PublicViewTest(TestCase):
                                 'registration/registration_form.html')
 
     def test_regsitration_post_good(self):
-        """test post to the registration page goes through user creation."""
+        """test post to the registration page goes through user creation.
+
+        Tests redirects, email sending.
+        """
 
         response = self.client.post('/accounts/register/',
                                     {'username': u'New_User',
@@ -80,8 +82,15 @@ class PublicViewTest(TestCase):
                                      'password1': u'testpw34',
                                      'password2': u'testpw34'},
                                     follow=True)
+        # check it redirected correctly
         self.assertTemplateUsed(response,
                                 'registration/registration_complete.html')
+        # check an email has been sent to the new user
+        mail_sent = mail.outbox[0]
+        self.assertIn(u'user@gmail.com', mail_sent.to)
+        # check there is a new inactive user made using form contents.
+        self.assertEqual(User.objects.filter(is_active=False)[0].username,
+                         u'New_User')
 
     def test_regsitration_post_bad(self):
         """test post to the registration page
@@ -95,7 +104,7 @@ class PublicViewTest(TestCase):
                                      'password2': u'bad'},
                                     follow=True)
         self.assertTemplateUsed(response,
-                                'registration/registration_complete.html')
+                                'registration/registration_form.html')
 
 
 class PhotoFactory(factory.django.DjangoModelFactory):
