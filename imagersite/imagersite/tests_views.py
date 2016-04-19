@@ -10,7 +10,7 @@ TMP_MEDIA_ROOT = 'tmp/media/'
 
 
 class PublicViewTest(TestCase):
-    """Testing views."""
+    """Testing views not signed in."""
 
     @override_settings(MEDIA_ROOT=os.path.join(BASE_DIR, 'tmp'))
     def setUp(self):
@@ -24,8 +24,22 @@ class PublicViewTest(TestCase):
         """Test the home view has the proper template and contains an expected image."""
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn('home.html', response.templates[0].name)
+        self.assertEqual('home.html', response.templates[0].name)
         self.assertEqual(self.photo.file, response.context['img'].file)
+
+    def test_login_get(self):
+        response = self.client.get('/accounts/login', follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(('/accounts/login/', 301), response.redirect_chain)
+        self.assertEqual('registration/login.html',
+                         response.templates[0].name)
+
+    def test_login_post(self):
+        response = self.client.post('/accounts/login',
+                                    {'username': 'Test_User',
+                                     'password': 'Secret'},
+                                    follow=True)
+        #import pdb; pdb.set_trace()
 
 
 class PhotoFactory(factory.django.DjangoModelFactory):
