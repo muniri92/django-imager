@@ -32,7 +32,6 @@ class PublicViewTest(TestCase):
     def test_login_get(self):
         response = self.client.get('/accounts/login', follow=True)
         self.assertEqual(response.status_code, 200)
-        # self.assertIn(('/accounts/login/', 301), response.redirect_chain)
         self.assertRedirects(response, '/accounts/login/', status_code=301)
         self.assertTemplateUsed(response, 'registration/login.html')
 
@@ -51,7 +50,10 @@ class PublicViewTest(TestCase):
         self.assertContains(resp, self.User.username, status_code=200)
 
     def test_profile_view(self):
-        """Test profile view works as expected."""
+        """Test profile view works as expected.
+
+        Should only display user info when logged in.
+        """
         response = self.client.get('/accounts/profile', follow=True)
         self.assertTemplateUsed(response, 'success.html')
         self.assertNotContains(response, self.User.username, status_code=200)
@@ -60,6 +62,24 @@ class PublicViewTest(TestCase):
         response = self.client.get('/accounts/profile', follow=True)
         self.assertContains(response, self.User.username, status_code=200)
         self.assertContains(response, self.User.email, status_code=200)
+
+    def test_registration_get(self):
+        """Test going to registration page redirects to correct template."""
+
+        response = self.client.get('/accounts/register/')
+        self.assertTemplateUsed(response,
+                                'registration/registration_form.html')
+
+    def test_regsitration_post(self):
+        """test post to the registration page goes through user creation."""
+
+        response = self.client.post('/accounts/register',
+                                    {'username': u'New_User',
+                                     'email': u'email@email.com',
+                                     'password1': u'testpw',
+                                     'password2': u'testpw'},
+                                    follow=True)
+        import pdb; pdb.set_trace()
 
 
 
