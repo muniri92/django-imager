@@ -119,3 +119,10 @@ class AlbumForm(ModelForm):
         model = Album
         exclude = []
         #fields = ['cover', 'title', 'description', 'published']
+
+
+@python_2_unicode_compatible
+class PhotoForm(ModelForm):
+    class Meta:
+        model = Photo
+        exclude = ['date_published']

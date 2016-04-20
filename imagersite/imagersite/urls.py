@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^images/photo/(?P<pk>[0-9]+)/$',
         login_required(DetailView.as_view(model=Photo,
                                           template_name="photo.html"))),
-    url(r'^images/albums/', include('imager_images.urls'))
+    url(r'^images/', include('imager_images.urls'))
     # url(r'^images/albums/add/$', login_required(AddAlbumForm.as_view()), name='add_album_view'),
     # url(r'^images/photos/add/$', login_required(AddPhotoForm.as_view()), name='add_photo_view'),
 ]
