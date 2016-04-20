@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect
 from imager_profile.models import ImagerProfile
 # from .forms  # import NameForm
 # from django.contrib.auth.decorators import login_required
-
 from django.contrib.auth import authenticate, login, logout
 
 
