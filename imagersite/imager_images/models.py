@@ -113,16 +113,15 @@ class Album(models.Model):
         return self.title
 
 
-@python_2_unicode_compatible
 class AlbumForm(ModelForm):
     class Meta:
         model = Album
-        exclude = []
+        exclude = ['owner']
         #fields = ['cover', 'title', 'description', 'published']
+        
 
 
-@python_2_unicode_compatible
 class PhotoForm(ModelForm):
     class Meta:
         model = Photo
-        exclude = ['date_published']
+        exclude = ['owner', 'date_published']
