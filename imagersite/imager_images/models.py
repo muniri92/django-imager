@@ -3,6 +3,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
+from django.forms import ModelForm
 # Create your models here.
 
 PUBLISHED = [
@@ -110,3 +111,11 @@ class Album(models.Model):
     def __str__(self):
         u"""WTF."""
         return self.title
+
+
+@python_2_unicode_compatible
+class AlbumForm(ModelForm):
+    class Meta:
+        model = Album
+        exclude = []
+        #fields = ['cover', 'title', 'description', 'published']

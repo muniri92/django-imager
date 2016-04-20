@@ -1,4 +1,4 @@
-from django import forms
+# from django import forms
 
-class AddAlbumForm(CreateView):
-    name = forms.CharField()
+# class AddAlbumForm(CreateView):
+#     name = forms.CharField()
