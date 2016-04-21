@@ -18,7 +18,7 @@ from django.contrib import admin
 # from .views import logins, logout
 from django.contrib.auth.decorators import login_required
 
-from .views import ClassView, ProfileView, LibraryView, edit_profile
+from .views import ClassView, ProfileView, LibraryView, PhotoEdit, AlbumEdit, edit_profile
 from imager_images.models import Album, Photo
 from django.conf import settings
 from django.conf.urls.static import static
@@ -34,12 +34,18 @@ urlpatterns = [
     url(r'^accounts/profile/edit/$', edit_profile, name="edit_profile"),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^images/library/$', login_required(LibraryView.as_view()), name='library_view'),
+    url(r'^images/photo/(?P<pk>[0-9]+)/edit$',
+        login_required(PhotoEdit.as_view()), name='edit_photo'),
+    url(r'^images/album/(?P<pk>[0-9]+)/edit$',
+        login_required(AlbumEdit.as_view()), name='edit_album'),
     url(r'^images/album/(?P<pk>[0-9]+)/$',
         login_required(DetailView.as_view(model=Album,
-                                          template_name="album.html"))),
+                                          template_name="album.html")),
+        name='view_album'),
     url(r'^images/photo/(?P<pk>[0-9]+)/$',
         login_required(DetailView.as_view(model=Photo,
-                                          template_name="photo.html"))),
+                                          template_name="photo.html")),
+        name='view_photo'),
     url(r'^images/', include('imager_images.urls'))
 ]
 
