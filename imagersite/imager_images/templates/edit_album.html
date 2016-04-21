@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Edit Albumn</title>
+{% endblock %}
+
+{% block content %}
+<div>
+<form action='' method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Update" />
+</form>
+</div>
+
+{% endblock %}
