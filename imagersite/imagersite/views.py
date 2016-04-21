@@ -1,5 +1,5 @@
 """Views for the Imager Site."""
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, UpdateView
 from imager_images.models import Photo, Album
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
@@ -8,6 +8,7 @@ from .forms import UserForm, ProfileForm
 # from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse_lazy
 
 
 
@@ -40,6 +41,24 @@ class LibraryView(TemplateView):
         """Return a dictionary of the photo instances."""
         albums = Album.objects.all()
         return {'albums': albums}
+
+
+class PhotoEdit(UpdateView):
+    model = Photo
+    fields = ['title', 'description', 'published']
+    template_name = 'edit_photo.html'
+
+    def get_success_url(self):
+        return reverse_lazy('view_photo', kwargs={'pk': self.object.pk})
+
+
+class AlbumEdit(UpdateView):
+    model = Album
+    fields = ['title', 'description', 'published']
+    template_name = 'edit_album.html'
+
+    def get_success_url(self):
+        return reverse_lazy('view_album', kwargs={'pk': self.object.pk})
 
 
 def logout_view(request):

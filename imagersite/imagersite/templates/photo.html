@@ -15,7 +15,7 @@
     <div>
       <img src="{{ photo.file.url }}">
     </div>
-    
   </article>
+  <a href ='{% url "edit_photo" photo.id %}'>Edit</a>
 
 {% endblock %}
