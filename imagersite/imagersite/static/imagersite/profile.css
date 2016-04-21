@@ -1,0 +1,38 @@
+
+/*.profile_info {
+	display: flex;
+
+}*/
+
+.welcome {
+	display: flex;
+	justify-content: center;
+}
+
+/* LIBRARY */
+
+.library_img {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.lib-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.lib_title {
+	display: flex;
+	justify-content: center;
+}
+
+
+.button_center {
+	display: flex;
+	justify-content: center; 
+}
+
+.butt_space {
+	padding: 20px, 20px, 20px, 20px;
+}

@@ -1,27 +1,47 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}
 	<title>Library</title>
 {% endblock %}
 
 {% block content %}
 {% load thumbnail %}
+	<header class="welcome">
+		<h2>Library Album</h2>
+	</header>
 
-	<h1>Library Album</h1>
+	<section class="container">
 
-	{% for album in albums %}
-	    {{ album.title }}
-	    {% thumbnail album.cover "200x200" as im %}
-	      <a href="/images/album/{{ album.id }}">
-	        <img src="{{ im.url }}">
-	      </a>
-		{% endthumbnail %}
-	{% endfor %}
-<div>
-  <a href="/images/albums/add"><button>Add Album</button></a>
-</div>
-<div>
-  <a href="/images/photos/add"><button>Add Photo</button></a>
-</div>
+		<article class="library_img row">
+			
+			{% for album in albums %}
+				<article class="lib-container">
+					<div class="lib_title">
+				    {{ album.title }}
+					</div>
+					<div class="u-max-full-width">
+				    {% thumbnail album.cover "200x200" as im %}
+				    	{% if album.id %}
+				      <a href="/images/album/{{ album.id }}">
+				        <img src="{{ im.url }}">
+				      </a>
+				      {% else %}
+				      	<img src="{% static 'imagersite/placeholder.jpg' %}">
+				      {% endif %}
+						{% endthumbnail %}	
+					</div>
+				</article>
+			{% endfor %}
+		</article>
+	</section>
+
+	<section class="button_center">
+		<article class="butt_space">
+		  <a href="/images/albums/add"><button>Add Album</button></a>
+		</article>
+		<article class="butt_space">
+		  <a href="/images/photos/add"><button>Add Photo</button></a>
+		</article>
+	</section>
 {% endblock %}
 
