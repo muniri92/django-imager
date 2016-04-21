@@ -18,7 +18,7 @@ from django.contrib import admin
 # from .views import logins, logout
 from django.contrib.auth.decorators import login_required
 
-from .views import ClassView, ProfileView, LibraryView
+from .views import ClassView, ProfileView, LibraryView, edit_profile
 from imager_images.models import Album, Photo
 from django.conf import settings
 from django.conf.urls.static import static
@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="login"),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': "homepage"}, name='logout'),
     url(r'^accounts/profile/$', ProfileView.as_view(), name="profile"),
+    url(r'^accounts/profile/edit/$', edit_profile, name="edit_profile"),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^images/library/$', login_required(LibraryView.as_view()), name='library_view'),
     url(r'^images/album/(?P<pk>[0-9]+)/$',
@@ -40,8 +41,6 @@ urlpatterns = [
         login_required(DetailView.as_view(model=Photo,
                                           template_name="photo.html"))),
     url(r'^images/', include('imager_images.urls'))
-    # url(r'^images/albums/add/$', login_required(AddAlbumForm.as_view()), name='add_album_view'),
-    # url(r'^images/photos/add/$', login_required(AddPhotoForm.as_view()), name='add_photo_view'),
 ]
 
 if settings.DEBUG:
