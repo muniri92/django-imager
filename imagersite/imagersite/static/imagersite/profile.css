@@ -9,14 +9,18 @@
 	justify-content: center;
 }
 
+/* LOGIN / REGISTRATION */
 
-/**/
-
-/*.regis_center {
+.login_center {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-}*/
+}
+
+.log_center {
+	display: flex;
+	justify-content: space-around;
+}
 
 /* LIBRARY */
 

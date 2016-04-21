@@ -5,31 +5,27 @@
 {% endblock %}
 
 {% block content %}
-	<h2 class="welcome">Imgr Profile:</h2>
 	<div class="container">
-		<div>
-			
-			<div class="profile_info row">
-			  <p class="tweleve column">First Name: {{ user.first_name }}</p>
-			</div>
-
-			<div class="profile_info row">	
-			  <p class="tweleve column">Last Name:  {{ user.last_name }}</p>
-			</div>
-
-			<div class="profile_info row">
-			  <p class="tweleve column">Username:   {{ user }} </p>
-			</div>
-
-			<div class="profile_info row">
-			  <p class="tweleve column">Email:      {{ user.email }}</p>
-			</div>
-
+		<h3 class="welcome">Imgr Profile:</h3>
+		<br>
+		<div class="profile_info row">
+		  <p class="tweleve column"><strong>Username:</strong>   {{ user }} </p>
+		</div>
+		<br>
+		<div class="profile_info row">
+		  <p class="tweleve column"><strong>First Name:</strong> {{ user.first_name }}</p>
+		</div>
+		<br>
+		<div class="profile_info row">	
+		  <p class="tweleve column"><strong>Last Name:</strong>  {{ user.last_name }}</p>
+		</div>
+		<br>
+		<div class="profile_info row">
+		  <p class="tweleve column"><strong>Email:</strong>      {{ user.email }}</p>
 		</div>
 	</div>
-
+	<br>
 	<div class="button_center">
 	  <a href="/accounts/profile/edit"><button>Edit Profile</button></a>
 	</div>
-
 {% endblock %}

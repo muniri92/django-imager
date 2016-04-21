@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 
 {% block title %}
 	<title>LOGIN</title>
@@ -8,21 +9,29 @@
 	<h1 class="welcome">LOGIN HERE</h1>
 
 	<form action='' method="POST">
-		<div class="row">
-			<div class="six columns">
+		<div class="row login_center">
+			<br>
+			<div class="six columns login_center">
 				{% csrf_token %}
-				<label for="username">Username</label>
-				<div>
-					{{ form.username }}
-				</div>
 			</div>
-			<div>
+			<br>
+			<div class="log_center">
+				<label for="username">Username</label>
+			</div>
+			<br>
+			<div class="log_center">	
+				{% render_field form.username class+="one-half column" %}
+			</div>
+			<br>
+			<div class="log_center">
 				<label for="password">Password</label>
-				<div class="u-full-width">
-					{{ form.password }}
-				</div>
+			</div>
+			<br>
+			<div class="log_center">
+				{% render_field form.password class+="one-half column" %}
 			</div>
 		</div>
+		<br>
     <div class="button_center">
       <input class="button-primary" type="submit", name="submit", value="LOGIN"></input>
     </div>
