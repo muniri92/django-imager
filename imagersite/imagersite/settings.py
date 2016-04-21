@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'imager_profile',
     'imager_images',
     'sorl.thumbnail',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE_CLASSES = [

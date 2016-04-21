@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 
 {% block title %}
 	<title>LOGIN</title>
@@ -12,15 +13,11 @@
 			<div class="six columns">
 				{% csrf_token %}
 				<label for="username">Username</label>
-				<div class="u-full-width">
-					{{ form.username }}
-				</div>
+				{% render_field form.username class+="u-full-width" %}
 			</div>
 			<div class="six columns">
 				<label for="password">Password</label>
-				<div class="u-full-width">
-					{{ form.password }}
-				</div>
+				{% render_field form.password class+="u-full-width" %}
 			</div>
 		</div>
     <div class="button_center">
