@@ -12,7 +12,7 @@ class UserForm(ModelForm):
         """Docstring."""
 
         model = User
-        fields = ["first_name", "last_name", "email", "password"]
+        fields = ["first_name", "last_name", "email"]
 
 
 class ProfileForm(ModelForm):
