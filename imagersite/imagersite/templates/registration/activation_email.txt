@@ -1,0 +1,9 @@
+Thanks for signing up!
+
+http://{{ site.domain }}{% url 'registration_activate' activation_key %}
+
+Don't use this, Instagram is better.
+
+CEO Munir Ibrahim
+CFO Michael Sullivan
+COO Kyle Richardson

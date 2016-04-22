@@ -3,6 +3,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.encoding import python_2_unicode_compatible
+from django.forms import ModelForm
 # Create your models here.
 
 PUBLISHED = [
@@ -40,6 +41,7 @@ class Photo(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        null=True,
         related_name='photos',
     )
 
@@ -79,13 +81,18 @@ class Album(models.Model):
         related_name='albums'
     )
 
-    cover = models.ForeignKey(
-        'Photo',
-        on_delete=models.CASCADE,
-        related_name='covered_albums',
+    cover = models.ImageField(
+        upload_to=user_directory_path,
         null=True,
-        default=None
     )
+
+    # cover = models.ForeignKey(
+    #     'Photo',
+    #     on_delete=models.CASCADE,
+    #     related_name='covered_albums',
+    #     null=True,
+    #     default=None
+    # )
 
     title = models.CharField(max_length=100)
 
@@ -104,3 +111,17 @@ class Album(models.Model):
     def __str__(self):
         u"""WTF."""
         return self.title
+
+
+class AlbumForm(ModelForm):
+    class Meta:
+        model = Album
+        exclude = ['owner']
+        #fields = ['cover', 'title', 'description', 'published']
+        
+
+
+class PhotoForm(ModelForm):
+    class Meta:
+        model = Photo
+        exclude = ['owner', 'date_published']

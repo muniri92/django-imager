@@ -1,0 +1,41 @@
+/* LOGO */
+
+.logo {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+
+/* NAVIGATION */
+
+.nav_list {
+	display: flex;
+	justify-content: center;
+}
+
+.nav ul {
+	display: flex;
+	justify-content: space-around;
+    list-style: none;
+    margin: 0px, 50px, -10px, 50px;
+}
+
+.nav ul li {
+	display: inline-flex;
+	justify-content: space-between;
+    margin: 0px, 50px, -10px, 50px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+
+/* USERNAME */
+
+.username {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 15px;
+}

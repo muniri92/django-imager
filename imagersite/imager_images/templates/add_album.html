@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+	<title>Add Album</title>
+{% endblock %}
+
+{% block content %}
+
+	<div>
+		<form action='' method="POST" enctype="multipart/form-data">
+			<div class="row add_center">
+		    {% csrf_token %}
+		    <div class="add_center">
+		    	{{ form.as_p }}
+		    </div>
+		  </div>
+		  <div class="button_center">
+		    <input type="submit" value="Save" />
+		  </div>
+		</form>
+	</div>
+
+{% endblock %}

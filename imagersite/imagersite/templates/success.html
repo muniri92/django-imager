@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>SUCCESS</title>
+{% endblock %}
+
+{% block content %}
+	<h1 class="welcome">YOU ARE NOW LOGGED IN!</h1>
+  <p>USERNAME: {{ user }} </p>
+  <p>EMAIL: {{ user.email }}</p>
+{% endblock %}

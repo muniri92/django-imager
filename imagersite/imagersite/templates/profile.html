@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Profile</title>
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h3 class="welcome">Imgr Profile:</h3>
+		<br>
+		<div class="profile_info row">
+		  <p class="tweleve column"><strong>Username:</strong>   {{ user }} </p>
+		</div>
+		<br>
+		<div class="profile_info row">
+		  <p class="tweleve column"><strong>First Name:</strong> {{ user.first_name }}</p>
+		</div>
+		<br>
+		<div class="profile_info row">	
+		  <p class="tweleve column"><strong>Last Name:</strong>  {{ user.last_name }}</p>
+		</div>
+		<br>
+		<div class="profile_info row">
+		  <p class="tweleve column"><strong>Email:</strong>      {{ user.email }}</p>
+		</div>
+	</div>
+	<br>
+	<div class="button_center">
+	  <a href="/accounts/profile/edit"><button>Edit Profile</button></a>
+	</div>
+{% endblock %}
