@@ -27,7 +27,7 @@ MEDIA_URL = "/media/"
 SECRET_KEY = '-$q396nkir%&0s4#g()6d6=b05y%3ip67yu2g&7sk-v&v$3=$r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
