@@ -91,16 +91,10 @@ WSGI_APPLICATION = 'imagersite.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_imager',
-        'USER': os.environ.get('USER', 'MunirIbrahim'),
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+'default':dj_database_url.config(
+    default=os.environ.get('DATABASE_URL'))
     }
 }
-
 
 CACHES = {
     'default': {
