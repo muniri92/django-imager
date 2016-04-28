@@ -9,7 +9,6 @@ django-widget-tweaks==1.4.1
 execnet==1.4.1
 factory-boy==2.6.1
 fake-factory==0.5.7
-gnureadline==6.3.3
 ipaddress==1.0.16
 ipython==4.1.2
 ipython-genutils==0.1.0
