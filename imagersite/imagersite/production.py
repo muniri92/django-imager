@@ -1,6 +1,6 @@
 from settings import *
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = False
 ALLOWED_HOSTS = ['*']
 #ALLOWED_HOSTS = ['http://ec2-52-37-133-225.us-west-2.compute.amazonaws.com', 'localhost']
