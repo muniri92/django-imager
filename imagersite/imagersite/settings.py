@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'imagersite', 'static'), ]
 
 # Media file handling
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -26,9 +27,23 @@ MEDIA_URL = "/media/"
 SECRET_KEY = '-$q396nkir%&0s4#g()6d6=b05y%3ip67yu2g&7sk-v&v$3=$r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'michaelmunirkyle@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_UN')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PW')
+# if DEBUG:
+#    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#    EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp', 'emails')
+
+ALLOWED_HOSTS = ['localhost', 'ec2-52-37-133-225.us-west-2.compute.amazonaws.com']
+
+# One-week activation window; you may, of course, use a different value.
+ACCOUNT_ACTIVATION_DAYS = 700
 
 
 # Application definition
@@ -42,6 +57,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'imager_profile',
     'imager_images',
+    'sorl.thumbnail',
+    'widget_tweaks',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -81,13 +99,14 @@ WSGI_APPLICATION = 'imagersite.wsgi.application'
 
 
 DATABASES = {
+'default':dj_database_url.config(
+    default=os.environ.get('DATABASE_URL'))
+    }
+
+CACHES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_imager',
-        'USER': 'MunirIbrahim',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'image_cache_table',
     }
 }
 
@@ -127,5 +146,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+	<title>ALBUM</title>
+{% endblock %}
+
+{% block content %}
+
+	<h1>{{ album.title }}</h1>
+	{% load thumbnail %}
+	{% for photo in album.photos.all %}
+	    {{ photo.title }}
+	    {% thumbnail photo.file "200x200" as im %}
+	      <a href="/images/photo/{{ photo.id }}">
+	        <img src="{{ im.url }}">
+	      </a>
+		{% endthumbnail %}
+	{% endfor %}
+	<a href ='{% url "edit_album" album.id %}'>Edit</a>
+
+{% endblock %}

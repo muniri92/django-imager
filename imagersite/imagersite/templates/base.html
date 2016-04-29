@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% block title %}
+    <title>Insta-Imgr</title>
+  {% endblock %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'imagersite/normalize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'imagersite/skeleton.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'imagersite/base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'imagersite/profile.css' %}">
+</head>
+<body>
+
+  <header>
+
+    <div class="logo">
+      <h1>Insta Imgr</h1>
+    </div>
+
+    <nav class="nav">
+  	  {% if user.is_authenticated %}
+  	  	<h5 class="username">{{user.username.upper}}</h5>
+  	  {% endif %}
+      {% if user.is_authenticated %}
+      <div class="nav-list">
+        <ul>
+          <li><a href="/accounts/profile">PROFILE</a></li>
+          <li><a href="/images/library/">LIBRARY</a></li>
+          <li><a href="/logout/">LOGOUT</a></li>
+        </ul>
+      {% else %}
+        <ul>
+          <li><a href="/accounts/register">REGISTER</a></li>
+          <li><a href="{% url 'login' %}">LOGIN</a></li>
+        </ul>
+      {% endif %}
+      </div>
+    </nav>
+
+  </header>
+
+  <section>
+    {% block content %}
+      {% if user.is_authenticated %}
+        <h1 class="welcome">Welcome, to Insta-Imgr!</h1>
+      {% else %}
+        <h2>Are you registered yet?</h2>
+      {% endif %}
+      <img class="home_img" src="{{ img.file.url }}">
+    {% endblock %}
+  </section>
+
+</body>
+</html>
