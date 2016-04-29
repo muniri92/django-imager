@@ -6,6 +6,7 @@ Django==1.9.5
 django-extensions==1.6.1
 django-registration==2.0.4
 django-widget-tweaks==1.4.1
+djangorestframework==3.3.3
 execnet==1.4.1
 factory-boy==2.6.1
 fake-factory==0.5.7

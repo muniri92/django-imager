@@ -23,9 +23,11 @@ from imager_images.models import Album, Photo
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import DetailView
+from imager_api.views import APIPhotoList
 
 
 urlpatterns = [
+    url(r'^api/', login_required(APIPhotoList.as_view())),
     url(r'^admin/', admin.site.urls),
     url(r'^$', ClassView.as_view(), name='homepage'),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="login"),
