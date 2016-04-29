@@ -2,9 +2,7 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.views.generic.edit import CreateView
 from .models import Album, Photo, AlbumForm, PhotoForm
-from .serializers import PhotoSerializer
 from django.http import HttpResponseRedirect
-from rest_framework import generics
 
 # Create your views here.
 
